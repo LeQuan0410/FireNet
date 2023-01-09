@@ -1,4 +1,4 @@
-# FireNet-Old
+# FireNet-Beta
 <h3>main.py</h3>
 <b>main.py is a layer7 and layer4 attack, it uses proxies so you dont need a VPS but this slows the speed and power alot.<b>
 <p></p>
