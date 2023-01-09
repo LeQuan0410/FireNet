@@ -1,5 +1,7 @@
 import urllib3
 import threading
+import os
+os.system('cls||clear')
 
 inf=1000000000000
 
