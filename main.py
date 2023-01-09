@@ -2,6 +2,8 @@ import requests
 import random
 from fake_useragent import UserAgent
 import threading
+import os
+os.system('cls||clear')
 
 inf=1000000000000
 
