@@ -3,6 +3,8 @@
 import os
 import time
 import sys
+import random
+	
 
 
 class c():
@@ -23,6 +25,11 @@ class c():
 	lightcyan='\033[96m'
 	reset='\033[0m'
 
+def rgb():
+	colors = ["\033[33m", "\033[35m", "\033[93m", "\033[31m", "\033[95m", "\033[36m", "\033[34m", "\033[32m"]
+	rnb = random.choice(colors)
+	return rnb
+
 def toolsmenu():
 	os.system('cls||clear')
 	print(f"""
@@ -38,7 +45,7 @@ def toolsmenu():
 	""")
 	try:
 		while (True):
-			tools = input(f"{c.green}[FireNet{c.black}@{c.purple}Root]$>{c.black} ")
+			tools = input(f"{c.green}[FireNet{rgb()}@{c.purple}Root]$>{rgb()} ")
 			if tools == "resolver":
 				os.system(f'python ./files/resolver.py')
 			elif tools == "home" or tools == "Home":
@@ -57,13 +64,13 @@ def l4menu():
 	║  Spoof-TCP           ║  <empty>               ║
 	║  UDP                 ║  <empty>               ║  
 	║  TCP-SYN             ║  <empty>               ║
-	║  <empty>             ║  <empty>               ║
+	║  Memcrashed          ║  <empty>               ║
 	║  <empty>             ║  <empty>               ║
 	╚══════════════════════╩════════════════════════╝
 	""")
 	try:
 		while (True):
-			layer4 = input(f"{c.green}[FireNet{c.black}@{c.purple}Root]$>{c.black} ")
+			layer4 = input(f"{c.green}[FireNet{rgb()}@{c.purple}Root]$>{rgb()} ")
 			if layer4 == "Spoof-TCP":
 				os.system(f'python ./files/sock.py')
 			elif layer4 == "home" or layer4 == "Home":
@@ -72,6 +79,8 @@ def l4menu():
 				os.system(f'python ./files/udp.py')
 			elif layer4 == "TCP-SYN" or layer4 == "tcp-syn":
 				os.system(f'python ./files/syn.py')
+			elif layer4 == "Memcrashed" or layer4 == "memcrashed":
+				os.system(f'python ./files/mem.py')
 			else:
 				print(":/ its not that hard to type.")
 	except KeyboardInterrupt:
@@ -92,7 +101,7 @@ def l7menu():
 	""")
 	try:
 		while (True):
-			layer7 = input(f"{c.green}[FireNet{c.black}@{c.purple}Root]$>{c.black} ")
+			layer7 = input(f"{c.green}[FireNet{rgb()}@{c.purple}Root]$>{rgb()} ")
 			if layer7 == "cf-captcha":
 				os.system(f'node ./files/captcha.js')
 			elif layer7 == "cfb":
@@ -127,13 +136,13 @@ def l7menu():
 def main():
 	os.system('cls||clear')
 	print(f"""
-	{c.black}d88888b d888888b d8888b. d88888b d8b   db d88888b d888888b 
-	{c.yellow}88'       `88'   88  `8D 88'     888o  88 88'     `~~88~~' 
-	{c.orange}88ooo      88    88oobY' 88ooooo 88V8o 88 88ooooo    88    
-	{c.red}88~~~      88    88`8b   88~~~~~ 88 V8o88 88~~~~~    88    
-	{c.pink}88        .88.   88 `88. 88.     88  V888 88.        88    
-	{c.orange}YP      Y888888P 88   YD Y88888P VP   V8P Y88888P    YP    
-	{c.black}
+	{rgb()}d88888b d888888b d8888b. d88888b d8b   db d88888b d888888b 
+	{rgb()}88'       `88'   88  `8D 88'     888o  88 88'     `~~88~~' 
+	{rgb()}88ooo      88    88oobY' 88ooooo 88V8o 88 88ooooo    88    
+	{rgb()}88~~~      88    88`8b   88~~~~~ 88 V8o88 88~~~~~    88    
+	{rgb()}88        .88.   88 `88. 88.     88  V888 88.        88    
+	{rgb()}YP      Y888888P 88   YD Y88888P VP   V8P Y88888P    YP    
+	{rgb()}
 		                ╔═══════════════╗
 		                ║     HOME      ║
 		╔═══════════════╩══════╦════════╩═══════════════╗
@@ -145,7 +154,7 @@ def main():
 																														 """)
 	while (True):
 		try:
-			cmd = input(f"{c.green}[FireNet{c.black}@{c.purple}Root]$>{c.black} ")
+			cmd = input(f"{c.green}[FireNet{rgb()}@{c.purple}Root]$>{rgb()} ")
 			
 			if cmd == "layer7" or cmd == "l7" or cmd == "Layer7":
 				l7menu()
