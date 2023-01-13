@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
+#!/usr/bin/python
 
 import os
 import time
 import sys
 import random
-	
+from subprocess import call
+
 
 
 class c():
@@ -24,6 +26,29 @@ class c():
 	pink='\033[95m'
 	lightcyan='\033[96m'
 	reset='\033[0m'
+
+def info():
+	print("""
+ -- FireNet - 2023 DDoS attack script --
+ Methods layer7:
+ 		HTTP GET - Get requests with threads 
+	 	Cloudflare bypasses - CF bypass via cloudscraper
+	 	HTTP POST - post requests with threads
+	 	HTTP GET With proxies - get requests with proxies
+	 	.onion-slam - custom method to DDoS .onion links via proxies
+	 	Http-custom - Hits layer 4 and 7 (ip must accept http requests)
+
+ 	Methods layer4:
+		Socket-TCP - TCP ddos over sockets
+		UDP - UDP flood
+		SYN - SYN attack
+		Memcrashed (beta) - Memcrashed AMP attack
+
+ 	Tools:
+		resolver - ip/domain resolver and more.
+
+ 	**MUCH MORE COMING SOON!**
+ """)
 
 def rgb():
 	colors = ["\033[33m", "\033[35m", "\033[93m", "\033[31m", "\033[95m", "\033[36m", "\033[34m", "\033[32m"]
@@ -47,7 +72,7 @@ def toolsmenu():
 		while (True):
 			tools = input(f"{c.green}[FireNet{rgb()}@{c.purple}Root]$>{rgb()} ")
 			if tools == "resolver":
-				os.system(f'python ./files/resolver.py')
+				call(["python", "./files/resolver.py"])
 			elif tools == "home" or tools == "Home":
 				main()
 			else:
@@ -58,10 +83,10 @@ def toolsmenu():
 def l4menu():
 	os.system('cls||clear')
 	print(f"""
-	                ╔═══════════════╗
+                  ╔═══════════════╗
 	                ║     Layer4    ║
 	╔═══════════════╩══════╦════════╩═══════════════╗
-	║  Spoof-TCP           ║  <empty>               ║
+	║  Socket-TCP          ║  <empty>               ║
 	║  UDP                 ║  <empty>               ║  
 	║  TCP-SYN             ║  <empty>               ║
 	║  Memcrashed          ║  <empty>               ║
@@ -71,16 +96,16 @@ def l4menu():
 	try:
 		while (True):
 			layer4 = input(f"{c.green}[FireNet{rgb()}@{c.purple}Root]$>{rgb()} ")
-			if layer4 == "Spoof-TCP":
-				os.system(f'python ./files/sock.py')
+			if layer4 == "Socket-TCP" or layer4 == "socket-tcp":
+				call(["python", "./files/sock.py"])
 			elif layer4 == "home" or layer4 == "Home":
 				main()
 			elif layer4 == "UDP" or layer4 == "udp":
-				os.system(f'python ./files/udp.py')
+				call(["python", "./files/udp.py"])
 			elif layer4 == "TCP-SYN" or layer4 == "tcp-syn":
-				os.system(f'python ./files/syn.py')
+				call(["python", "./files/syn.py"])
 			elif layer4 == "Memcrashed" or layer4 == "memcrashed":
-				os.system(f'python ./files/mem.py')
+				call(["python", "./files/mem.py"])
 			else:
 				print(":/ its not that hard to type.")
 	except KeyboardInterrupt:
@@ -103,28 +128,28 @@ def l7menu():
 		while (True):
 			layer7 = input(f"{c.green}[FireNet{rgb()}@{c.purple}Root]$>{rgb()} ")
 			if layer7 == "cf-captcha":
-				os.system(f'node ./files/captcha.js')
+				call(["node", "./files/captcha.js"])
 			elif layer7 == "cfb":
 				print("NodeJS (1) or Python (2) Version of CF-Bypass")
 				norp = input(">> ")
 				if norp == "1":
-					os.system(f'node ./files/cfb.js')
+					call(["node", "./files/cfb.js"])
 				elif norp == "2":
-					os.system(f'python ./files/cfbypass.py')
+					call(["node", "./files/cfbypass.py"])
 				else:
 					print("Are you dumb? select 1 or 2.")
 			elif layer7 == "http-raw":
-				os.system(f'node ./files/http.js')
+				call(["node", "./files/http.js"])
 			elif layer7 == "http-post":
-				os.system(f'python ./files/post.py')
+				call(["python", "./files/post.py"])
 			elif layer7 == "http-proxy":
-				os.system(f'python ./files/proxy.py')
+				call(["python", "./files/proxy.py"])
 			elif layer7 == "cf-uam":
-				os.system(f'node ./files/uam.js')
+				call(["node", "./files/uam.py"])
 			elif layer7 == "http-power":
-				os.system(f'python ./files/raw.py')
+				call(["python", "./files/raw.py"])
 			elif layer7 == ".onion-slam":
-				os.system(f'python ./files/tor.py')
+				call(["python", "./files/tor.py"])
 			elif layer7 == "home" or layer7 == "Home":
 				main()
 			else:
@@ -147,9 +172,9 @@ def main():
 		                ║     HOME      ║
 		╔═══════════════╩══════╦════════╩═══════════════╗
 		║  layer7              ║  tools                 ║
-		║  layer4              ║  <empty>               ║  
+		║  layer4              ║  Info                  ║  
 		╚══════════════════════╩════════════════════════╝
-		     type 'home' to return back here.
+				 type 'home' to return back here.
 																
 																														 """)
 	while (True):
@@ -166,6 +191,8 @@ def main():
 				main()
 			elif cmd == "exit" or cmd == "Exit":
 				sys.exit()
+			elif cmd == "Info" or cmd == "info":
+				info()
 			else:
 				print("Are you sure your not stupid? type that again.")
 		except KeyboardInterrupt:
