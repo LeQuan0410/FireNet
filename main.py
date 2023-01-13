@@ -25,6 +25,32 @@ def sword(screen):
 	
 	screen.play(scenes, stop_on_resize=False, repeat=False)
 
+def rocket(screen):
+	scenes = []
+	effects = [
+			Print(screen,
+						ColourImageFile(screen, "./files/gif/rocket.gif", screen.height,
+														uni=screen.unicode_aware),
+						screen.height//- 5,
+						speed=1),
+	]
+	scenes.append(Scene(effects, 20))
+	
+	screen.play(scenes, stop_on_resize=False, repeat=False)
+
+def anime(screen):
+	scenes = []
+	effects = [
+			Print(screen,
+						ColourImageFile(screen, "./files/gif/nerd.gif", screen.height,
+														uni=screen.unicode_aware),
+						screen.height//- 5,
+						speed=1),
+	]
+	scenes.append(Scene(effects, 20))
+	
+	screen.play(scenes, stop_on_resize=False, repeat=False)
+
 def load(screen):
 	scenes = []
 	effects = [
@@ -104,6 +130,7 @@ def toolsmenu():
 		while (True):
 			tools = input(f"{c.green}[FireNet{rgb()}@{c.purple}Root]$>{rgb()} ")
 			if tools == "resolver":
+				Screen.wrapper(anime)
 				call(["python", "./files/resolver.py"])
 			elif tools == "home" or tools == "Home":
 				main()
@@ -129,18 +156,18 @@ def l4menu():
 		while (True):
 			layer4 = input(f"{c.green}[FireNet{rgb()}@{c.purple}Root]$>{rgb()} ")
 			if layer4 == "Socket-TCP" or layer4 == "socket-tcp":
-				Screen.wrapper(sword)
+				Screen.wrapper(rocket)
 				call(["python", "./files/sock.py"])
 			elif layer4 == "home" or layer4 == "Home":
 				main()
 			elif layer4 == "UDP" or layer4 == "udp":
-				Screen.wrapper(sword)
+				Screen.wrapper(rocket)
 				call(["python", "./files/udp.py"])
 			elif layer4 == "TCP-SYN" or layer4 == "tcp-syn":
-				Screen.wrapper(sword)
+				Screen.wrapper(rocket)
 				call(["python", "./files/syn.py"])
 			elif layer4 == "Memcrashed" or layer4 == "memcrashed":
-				Screen.wrapper(sword)
+				Screen.wrapper(rocket)
 				call(["python", "./files/mem.py"])
 			else:
 				print(":/ its not that hard to type.")
