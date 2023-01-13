@@ -6,7 +6,39 @@ import time
 import sys
 import random
 from subprocess import call
+from asciimatics.effects import BannerText, Print, Scroll
+from asciimatics.renderers import ColourImageFile, FigletText, ImageFile, StaticRenderer
+from asciimatics.scene import Scene
+from asciimatics.screen import Screen
+from asciimatics.exceptions import ResizeScreenError, StopApplication
 
+def sword(screen):
+	scenes = []
+	effects = [
+			Print(screen,
+						ColourImageFile(screen, "./files/gif/sword.gif", screen.height,
+														uni=screen.unicode_aware),
+						screen.height//- 5,
+						speed=1),
+	]
+	scenes.append(Scene(effects, 20))
+	
+	screen.play(scenes, stop_on_resize=False, repeat=False)
+
+def load(screen):
+	scenes = []
+	effects = [
+			Print(screen,
+						ColourImageFile(screen, "./files/gif/load.gif", screen.height,
+														uni=screen.unicode_aware),
+						screen.height//- 5,
+						speed=1),
+	]
+	scenes.append(Scene(effects, 80))
+	
+	screen.play(scenes, stop_on_resize=False, repeat=False)
+
+Screen.wrapper(load)
 
 
 class c():
@@ -31,23 +63,23 @@ def info():
 	print("""
  -- FireNet - 2023 DDoS attack script --
  Methods layer7:
- 		HTTP GET - Get requests with threads 
-	 	Cloudflare bypasses - CF bypass via cloudscraper
-	 	HTTP POST - post requests with threads
-	 	HTTP GET With proxies - get requests with proxies
-	 	.onion-slam - custom method to DDoS .onion links via proxies
-	 	Http-custom - Hits layer 4 and 7 (ip must accept http requests)
+		HTTP GET - Get requests with threads 
+		Cloudflare bypasses - CF bypass via cloudscraper
+		HTTP POST - post requests with threads
+		HTTP GET With proxies - get requests with proxies
+		.onion-slam - custom method to DDoS .onion links via proxies
+		Http-custom - Hits layer 4 and 7 (ip must accept http requests)
 
- 	Methods layer4:
+	Methods layer4:
 		Socket-TCP - TCP ddos over sockets
 		UDP - UDP flood
 		SYN - SYN attack
 		Memcrashed (beta) - Memcrashed AMP attack
 
- 	Tools:
+	Tools:
 		resolver - ip/domain resolver and more.
 
- 	**MUCH MORE COMING SOON!**
+	**MUCH MORE COMING SOON!**
  """)
 
 def rgb():
@@ -58,7 +90,7 @@ def rgb():
 def toolsmenu():
 	os.system('cls||clear')
 	print(f"""
-	                ╔═══════════════╗
+                  ╔═══════════════╗
 	                ║     tools     ║
 	╔═══════════════╩══════╦════════╩═══════════════╗
 	║  resolver            ║  <empty>               ║
@@ -83,7 +115,7 @@ def toolsmenu():
 def l4menu():
 	os.system('cls||clear')
 	print(f"""
-                  ╔═══════════════╗
+	                ╔═══════════════╗
 	                ║     Layer4    ║
 	╔═══════════════╩══════╦════════╩═══════════════╗
 	║  Socket-TCP          ║  <empty>               ║
@@ -97,14 +129,18 @@ def l4menu():
 		while (True):
 			layer4 = input(f"{c.green}[FireNet{rgb()}@{c.purple}Root]$>{rgb()} ")
 			if layer4 == "Socket-TCP" or layer4 == "socket-tcp":
+				Screen.wrapper(sword)
 				call(["python", "./files/sock.py"])
 			elif layer4 == "home" or layer4 == "Home":
 				main()
 			elif layer4 == "UDP" or layer4 == "udp":
+				Screen.wrapper(sword)
 				call(["python", "./files/udp.py"])
 			elif layer4 == "TCP-SYN" or layer4 == "tcp-syn":
+				Screen.wrapper(sword)
 				call(["python", "./files/syn.py"])
 			elif layer4 == "Memcrashed" or layer4 == "memcrashed":
+				Screen.wrapper(sword)
 				call(["python", "./files/mem.py"])
 			else:
 				print(":/ its not that hard to type.")
@@ -128,27 +164,36 @@ def l7menu():
 		while (True):
 			layer7 = input(f"{c.green}[FireNet{rgb()}@{c.purple}Root]$>{rgb()} ")
 			if layer7 == "cf-captcha":
+				Screen.wrapper(sword)
 				call(["node", "./files/captcha.js"])
 			elif layer7 == "cfb":
 				print("NodeJS (1) or Python (2) Version of CF-Bypass")
 				norp = input(">> ")
 				if norp == "1":
+					Screen.wrapper(sword)
 					call(["node", "./files/cfb.js"])
 				elif norp == "2":
+					Screen.wrapper(sword)
 					call(["node", "./files/cfbypass.py"])
 				else:
 					print("Are you dumb? select 1 or 2.")
 			elif layer7 == "http-raw":
+				Screen.wrapper(sword)
 				call(["node", "./files/http.js"])
 			elif layer7 == "http-post":
+				Screen.wrapper(sword)
 				call(["python", "./files/post.py"])
 			elif layer7 == "http-proxy":
+				Screen.wrapper(sword)
 				call(["python", "./files/proxy.py"])
 			elif layer7 == "cf-uam":
+				Screen.wrapper(sword)
 				call(["node", "./files/uam.py"])
 			elif layer7 == "http-power":
+				Screen.wrapper(sword)
 				call(["python", "./files/raw.py"])
 			elif layer7 == ".onion-slam":
+				Screen.wrapper(sword)
 				call(["python", "./files/tor.py"])
 			elif layer7 == "home" or layer7 == "Home":
 				main()
